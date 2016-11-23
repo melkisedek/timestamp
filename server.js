@@ -19,13 +19,13 @@ app.get('/:time', function (req, res) {
   res.writeHead(200, { 'Content-Type': 'application/json' });
   
   if(moment(req.params.time ,'MMMM DD, YYYY', true).isValid()){
-    res.send(toNatural(req.params.time));
+    res.end(toNatural(req.params.time));
   }
   else if(moment(req.params.time, 'X', true).isValid()){
-    res.send(toUnix(req.params.time));
+    res.end(toUnix(req.params.time));
   } 
   else {
-    res.send(JSON.stringify({
+    res.end(JSON.stringify({
             unix : null,
             natural: null
         }));
